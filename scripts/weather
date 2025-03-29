@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+LOCATION="switzerland"
+OPTIONS="?format=3&m"  
+echo "Fetching weather for $LOCATION"
+curl -s "wttr.in/$LOCATION$OPTIONS"
 
-# TODO: Display weather of IIIT, Lucknow
-# For more information see: https://wttr.in/:help
+ 
+
+
+ 
