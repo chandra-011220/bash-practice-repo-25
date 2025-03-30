@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-repos=$(find . -name .git -type d -prune | sed 's|/.git||')
-for repo in $repos; do
-    echo "checking repository: $repo"
-    if [[ -f "$repo/.gitignore" ]]; then
-        echo "Found .gitignore in $repo. remove listed files"
-        while IFS= read -r file; do
-            [[ -z "$file"||"$file"==\#* ]] && continue
-            rm -rf "$repo/$file" 
-        done < "$repo/.gitignore"
-    else
-        echo "no .gitignore found in $repo, skip"
-    fi
+ find . -name .git -type d -prune | while read -r gitdir; do
+    root_repository="$(dirname "$gitdir")"
+    echo "clean repo that ignored in  git : $root_repository"
+    (cd "$root_repository" && git clean -Xdf)
+
 done
