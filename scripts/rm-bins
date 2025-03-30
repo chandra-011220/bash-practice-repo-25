@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-
-# Remove all the binary files (usually made after gcc) present inside current directory
-# Refer "man find" for more information, you can also use modern tool like fd instead of find
+# I havent used fd bcoz if it is not  pre installed we get isssue hence i avoided
+echo "Removed binary files "
+find . -maxdepth 1 -type f \( -name "*.out" -o -name "*.o" -o -executable \) -delete -print
